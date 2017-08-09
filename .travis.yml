@@ -1,2 +1,9 @@
 language: node_js
 node_js: node
+deploy:
+  provider: heroku
+  api_key:
+    secure: cSKZ+9My1EPtbgMR/mj+oFJQNYrY1+KUAiJvxK3GGstvWn6KA4KQJNcre+TIF6QgcDb6M0g8lZQOcLfshI4+R2UGj6lWAytMO9gG9/i0441NHdxzPceo8N2KnQ+nY7xdaRUu7xgZvDAgkDBEvN6E27VBQ6cPFzpbryxyrK31iov+0U2cmFgXUvHWI4f/hm5JCtqy7oN0/4pom4O54yPdUisVyFsOnEey5DThuX7MOAftTBws05vWZWh3E5QEGnrSkMpV+BTY9d2Wd9y08Kc6w3S8OW5D1gI6P142cCZDmAtG8FbEfPalnjayGMWm9jP8dv7PcYKwx/50ALsxv2CRqoorc+xHvc2afkXNgO7pznPsXua8V7EEx9ZMtAwIaQM+/EEfpMQdkdNMwXOZr93llwcvhXlpb8B+L+YjAQwMzOvRqtXAD3RSRSive4Gm/qneJ2AbL5KKASWEIFP2biYFL7sdwRn0iKKDxDbS+aiLglD48vN8JEwvtUuFW35jodeOi6H96nEicsOBHBQKeX4hHdmckSd7Yupz7rbknKYH2Ok6U51CVJyxHZmyMF0JSL7Dx7o2Z++JE3te2iSXUxPM+J0jOXv9TDeX5EKvku59iYVD0VXqyuR/Y0KA3IpYBcn7tb2g9RQKwzgUY+vX9Og9Oc8syp9/YhugTiy+mt5YZLE=
+  app: pure-mountain-50438
+  on:
+    repo: AFish622/blog-api
