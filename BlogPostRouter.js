@@ -14,24 +14,25 @@ router.get('/', (req, res) => {
 router.delete('/:id', (req, res) => {
 	// delete a post from DB
 	BlogPosts.delete(req.params.id)
-	res.send(BlogPosts.get())
+	res.status(204).send(BlogPosts.get())
 })
 
 router.post('/', (req, res) => {
-	const requiredFields = ['name', 'content', 'author'];
+	const requiredFields = ['title', 'content', 'author'];
 	for (let i = 0; i < requiredFields.length; i++) {
 		const field = requiredFields[i];
 		if (!(field in req.body)) {
 			const message = `Missing ${field} in request body`;
 			res.status(400).send(message);
+			return 
 		}
 	}
 	BlogPosts.create(req.body.title, req.body.content, req.body.author);
-	res.send(BlogPosts.get())
+	res.status(201).send(BlogPosts.get())
 })
 
 router.put('/', (req, res) => {
-	const requiredFields = ['name', 'content', 'author'];
+	const requiredFields = ['title', 'content', 'author'];
 	for (let i = 0; i < requiredFields.length; i++) {
 		const field = requiredFields[i];
 		if (!(field in req.body)) {
@@ -48,7 +49,7 @@ router.put('/', (req, res) => {
 		name: req.body.name,
 		content: req.body.content,
 		author: req.body.author
-		res.status(204).end();
+		// res.status(204).end();
 	})
 
 	BlogPosts.update(req.body)

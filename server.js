@@ -11,6 +11,37 @@ app.use(morgan('common'));
 app.use(jsonParser)
 app.use('/blog', blogRouter);
 
-app.listen(8000, () => {
-	console.log('running on 8080')
-})
+let server;
+
+function runServer() {
+	const port = process.env.port || 8000;
+	return new Promise((resolve, reject) => {
+		server = app.listen(port, () => {
+			console.log(`listening on port ${port}`);
+			resolve(server);
+		})
+		.on('error', err => {
+			reject(err);
+		})
+
+	})
+}
+
+function closeServer() {
+	return new Promise((resolve, reject) => {
+		console.log('closing server');
+		server.close(err => {
+			if(err) {
+				reject(err);
+				return;
+			}
+			resolve();
+		})
+	})
+}
+
+if (require.main === module) {
+	runServer().catch(err => console.log(err));
+}
+
+module.exports = {app, runServer, closeServer};
